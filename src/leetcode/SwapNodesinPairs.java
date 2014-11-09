@@ -1,0 +1,46 @@
+package leetcode;
+
+/*Given a linked list, swap every two adjacent nodes and return its head.
+
+For example,
+Given 1->2->3->4, you should return the list as 2->1->4->3.
+
+Your algorithm should use only constant space. You may not modify the values in the list, 
+only nodes itself can be changed.*/
+
+public class SwapNodesinPairs {
+	
+	 // Definition for singly-linked list.
+	  public class ListNode {
+	      int val;
+	      ListNode next;
+	      ListNode(int x) {
+	          val = x;
+	          next = null;
+	      }
+	  }
+	 
+	public class Solution {
+	    public ListNode swapPairs(ListNode head) {
+	        if (head == null || head.next == null) {
+	            return head;
+	        }
+	        ListNode fakehead = new ListNode(-1);
+	        fakehead.next = head;
+	        
+	        ListNode pre1 = fakehead;
+	        ListNode pre2 = head;
+	        
+	        while (pre2 != null && pre2.next != null) {
+	            ListNode nextStart = pre2.next.next;
+	            pre2.next.next = pre2;
+	            pre1.next = pre2.next;
+	            pre2.next = nextStart;
+	            pre1 = pre1.next.next;
+	            pre2 = pre1.next;
+	        }
+	        
+	        return fakehead.next;
+	    }
+	}
+}

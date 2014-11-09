@@ -1,5 +1,9 @@
 package leetcode;
 
+/*Given a string, find the length of the longest substring without repeating characters. 
+For example, the longest substring without repeating letters for "abcabcbb" is "abc", 
+which the length is 3. For "bbbbb" the longest substring is "b", with the length of 1.*/
+
 import java.util.LinkedList;
 
 public class LongestSubstringWithoutRepeatingCharacters {
@@ -30,11 +34,13 @@ public class LongestSubstringWithoutRepeatingCharacters {
 	                curNode.add(s.charAt(i));
 	            }
 	            
-	            maxLen = maxLen<curNode.size()?curNode.size():maxLen;
+	            maxLen = maxLen < curNode.size()?curNode.size():maxLen;
 	        }
 	        
 	        return maxLen;
 	    }
+	    
+	    
 	}
 }
 
