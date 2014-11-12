@@ -1,5 +1,5 @@
 package leetcode;
-
+//Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 import java.util.List;
 //我们来分析一下上述算法的时间复杂度。假设总共有k个list，每个list的最大长度是n，
 //那么运行时间满足递推式T(k) = 2T(k/2)+O(n*k)。根据主定理，可以算出算法的总复杂度是O(nklogk)。
