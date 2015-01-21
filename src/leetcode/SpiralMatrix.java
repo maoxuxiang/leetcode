@@ -74,4 +74,51 @@ public class SpiralMatrix {
 	        
 	    }
 	}
+	
+	//more clear
+	public class Solution2 {
+	    public List<Integer> spiralOrder(int[][] matrix) {
+	        List<Integer> res = new ArrayList<Integer>();
+	        if (matrix == null || matrix.length == 0) {
+	            return res;
+	        }
+	        
+	        int m = matrix.length;
+	        int n = matrix[0].length;
+	        
+	        int min = Math.min(m,n);
+	        int level = min/2;
+	        
+	        for (int i=0; i<level; i++) {
+	            for (int j=i; j<n-i-1; j++) {
+	                res.add(matrix[i][j]);
+	            }
+	            for (int j=i; j<m-1-i; j++) {
+	                res.add(matrix[j][n-1-i]);
+	            }
+	            for (int j=i; j<n-i-1; j++) {
+	                res.add(matrix[m-1-i][n-j-1]);
+	            }
+	            for (int j=i; j<m-1-i; j++) {
+	                res.add(matrix[m-1-j][i]);
+	            }
+	        }
+	        
+	        if (min%2 == 1) {
+	            if (m > n) {
+	                for (int i=level; i<m-level; i++) {
+	                    res.add(matrix[i][level]);
+	                }
+	            }
+	            else {
+	                for (int i=level; i<n-level; i++) {
+	                    res.add(matrix[level][i]);
+	                }
+	            }
+	        }
+	        
+	        return res;
+
+	    }
+	}
 }

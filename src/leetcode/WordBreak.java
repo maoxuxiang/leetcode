@@ -25,6 +25,7 @@ public class WordBreak {
 	            for (int j=0; j<str.length(); j++) {
 	                if (map[j] && dict.contains(str.substring(j))) {
 	                    map[i+1] = true;
+	                    break;
 	                }
 	            }
 	        }

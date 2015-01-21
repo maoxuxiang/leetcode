@@ -11,19 +11,26 @@ Here are few examples.
 public class SearchInsertPosition {
 	public class Solution {
 	    public int searchInsert(int[] A, int target) {
-	        if (A.length == 0) {
-	            return 0;
+	        if (A == null || A.length == 0) {
+	            return -1;
 	        }
 	        
-	        for (int i=0; i<A.length; i++) {
-	            if (A[i] < target) {
-	                continue;
+	        int start = 0;
+	        int end = A.length-1;
+	        
+	        while (start<=end) {
+	            int mid = (start+end)/2;
+	            if (A[mid] == target) {
+	                return mid;
+	            }
+	            else if (A[mid] > target) {
+	                end = mid-1;
 	            }
 	            else {
-	                return i;
+	                start = mid+1;
 	            }
 	        }
-	        return A.length;
+	        return start;
 	    }
 	}
 }
