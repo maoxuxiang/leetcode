@@ -29,4 +29,32 @@ public class MergeSortedArray {
 	        }
 	    }
 	}
+	
+	//solution2
+	public class Solution2 {
+	    public void merge(int A[], int m, int B[], int n) {
+	        if (n == 0) {
+	            return;
+	        }
+	        int i = m-1;
+	        int j = n-1;
+	        int total = m+n-1;
+	        
+	        while (j>=0) {
+	            if (i>=0 && A[i] > B[j]) {
+	                A[total] = A[i];
+	                i--;
+	            }
+	            else if (i>=0 && A[i]<=B[j]) {
+	                A[total] = B[j];
+	                j--;
+	            }
+	            else {
+	                A[total] = B[j];
+	                j--;
+	            }
+	            total--;
+	        }
+	    }
+	}
 }

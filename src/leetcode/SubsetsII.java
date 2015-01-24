@@ -82,4 +82,32 @@ public class SubsetsII {
 	    
 	   
 	}
+	
+	//Solution3
+	public class Solution3 {
+	    public List<List<Integer>> subsetsWithDup(int[] num) {
+	        List<List<Integer>> res = new ArrayList<List<Integer>>();
+	        if (num == null || num.length == 0) {
+	            return res;
+	        }
+	        Arrays.sort(num);
+	        List<Integer> item = new ArrayList<Integer>();
+	        helper (res, item, num, 0);
+	        res.add(new ArrayList());
+	        return res;
+	    }
+	    
+	    private void helper(List<List<Integer>> res, List<Integer> item, int[] num, int start) {
+	        for (int i=start; i<num.length; i++) {
+	            if (i>start && num[i] == num[i-1]) {
+	                continue;
+	            }
+	            item.add(num[i]);
+	            res.add(new ArrayList<Integer>(item));
+	            helper (res, item, num, i+1);
+	            item.remove(item.size()-1);
+	            
+	        }
+	    }
+	}
 }
