@@ -35,4 +35,34 @@ public class IntegertoRoman {
 	    
 	    }
 	}
+	
+	//solution2
+	public class Solution2 {
+	    public String intToRoman(int num) {
+	    //I 1  
+	    //V 5  
+	    //X 10  
+	    //L 50  
+	    //C 100  
+	    //D 500  
+	    //M 1,000 
+	    
+	    String[] str = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I"};
+	    int[] digit = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
+	    
+	    StringBuilder sb = new StringBuilder();
+	    
+	    int i = 0;
+	    while (num > 0) {
+	        if (num - digit[i]>=0) {
+	            num = num - digit[i];
+	            sb.append(str[i]);
+	        }
+	        else {
+	            i++;
+	        }
+	    }
+	    return sb.toString();
+	    }
+	}
 }

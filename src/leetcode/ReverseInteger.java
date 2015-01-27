@@ -35,23 +35,25 @@ public class ReverseInteger {
 	    }
 	    
 	    // solution2 
-	    public int reverse2(int x) {
-	        
-	        if (x < 0) {
-	            return -reverse(-x);
+	    public class Solution2 {
+	        public int reverse(int x) {
+	            if (x == Integer.MIN_VALUE) {
+	                return 0;
+	            }
+	            int num = Math.abs(x);
+	            int res = 0;
+	            int digit = 0;
+	            
+	            while (num>0) {//越界检查
+	                if (res > (Integer.MAX_VALUE)/10) {
+	                    return 0;
+	                }
+	                digit = num % 10;
+	                res = res*10 + digit;
+	                num = num/10;
+	            }
+	            return x >0? res: -res;
 	        }
-	        
-	        int i = 10;
-	        int res = 0;
-	        int digit;
-	        
-	        while (x > 0) {
-	            digit = x % i;
-	            res = res*10 +digit;
-	            x = x / i;
-	        }
-	        
-	        return res;
 	    }
 	}
 }
